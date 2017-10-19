@@ -11,7 +11,7 @@ function setup() {
 
 function draw() {
 	background(51);
-	//snake.death();
+	snake.death();
 	snake.update();
 	snake.show();
 	food.show();

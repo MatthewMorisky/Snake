@@ -8,7 +8,7 @@ function Food() {
 	this.y = floor(random(rows)) * scl;
 	}
 	this.show = function() {
-		fill( 35, 168, 68);
+		fill( 135, 82, 13);
 		rect(this.x, this.y, scl, scl);
 	}
 }

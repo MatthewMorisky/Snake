@@ -69,29 +69,41 @@ function Snake() {
 			this.isPaused = true;
 		}
 	}
+	/**
+	 * This method checks if any pieces of the tail 
+	 * are where the head is and if so resets the game
+	 */
 	this.death = function() {
 		for (var i = 0; i < this.tail.length; i++) {
 			var pos = this.tail[i];
 			var d = dist(this.x,this.y, pos.x, pos.y);
 			if (d < 1) {
-				console.log('Game over, Final Score: ' + this.total);
+				console.log('Game over, Final Score: ' + this.total); //ToDo make the end screen not just a console log
 				this.total = 0;
 				this.tail = [];
 			}
 
 		}
 	}
+	/**
+	 * This method
+	 *
+	 */
 	this.update = function() {
-		if(this.total === this.tail.length) {
-			for (var i = 0; i < this.tail.length-1; i++) {
-				this.tail[i] = this.tail[i+1];
-			}
+		
+		for (var i = 0; i < this.tail.length-1; i++) {
+			this.tail[i] = this.tail[i+1];
 		}
+		
+		//Creates a new tail piece if total has changed
+		//Otherwise 
 		this.tail[this.total-1] = createVector(this.x, this.y);
 
+		//Moves the head
 		this.x = this.x + this.xspeed*scl;
 		this.y = this.y + this.yspeed*scl;
 
+		//prevents the head from going of screen
 		this.x = constrain(this.x, 0, (width-1)-scl);
 		this.y = constrain(this.y, 0, (height-1)-scl);
 	}
@@ -99,11 +111,12 @@ function Snake() {
 	this.show = function() {
 		
 		for(var i = 0; i < this.total; i++) {
-			fill(35, random(100, 200), 68); //Color for the snake body, random makes he snake look shiny
+			fill(35, random(150, 255), 68); //Color for the snake body, random makes he snake look shiny
 			rect(this.tail[i].x, this.tail[i].y, scl, scl);
 
 		}
 		fill(255);
 		rect(this.x, this.y, scl, scl);
+
 	}
 }

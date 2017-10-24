@@ -86,28 +86,34 @@ function Snake() {
 		}
 	}
 	/**
-	 * This method
-	 *
+	 * This method moves all the snake pieces where they should be
+	 * and adds new pieces in when necessary
 	 */
 	this.update = function() {
-		
-		for (var i = 0; i < this.tail.length-1; i++) {
-			this.tail[i] = this.tail[i+1];
+		//opens up a slot for the new block if tail has increased
+		if (this.total === this.tail.length) {
+			//Moves every object in the tail down one except for the
+			//last one each cycle tail[0] is the furthest from the head
+			for (var i = 0; i < this.tail.length-1; i++) {
+				this.tail[i] = this.tail[i+1];
+			}
 		}
-		
-		//Creates a new tail piece if total has changed
-		//Otherwise 
+		//Places the block immediatly behind the head
 		this.tail[this.total-1] = createVector(this.x, this.y);
 
 		//Moves the head
 		this.x = this.x + this.xspeed*scl;
 		this.y = this.y + this.yspeed*scl;
 
-		//prevents the head from going of screen
+		//prevents the head from going off screen
 		this.x = constrain(this.x, 0, (width-1)-scl);
 		this.y = constrain(this.y, 0, (height-1)-scl);
 	}
-
+	/**
+	 * This method colors all of the snake body and the head 
+	 * and creates squares of size scale at each position in the tail
+	 * and head
+	 */
 	this.show = function() {
 		
 		for(var i = 0; i < this.total; i++) {

@@ -9,6 +9,7 @@ function setup() {
 	frameRate(10); //Gives the game an arcade feel
 	food = new Food();
 	food.pickLocation();
+	score = new Score();
 }
 
 function draw() {
@@ -18,6 +19,7 @@ function draw() {
 	snake.update();
 	snake.show();
 	food.show();
+	score.show();
 
 	if (snake.eat(food)) {
 		food.pickLocation();

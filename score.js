@@ -8,9 +8,11 @@ function Score() {
 		if (this.highscore < snake.total) {
 			this.highscore = snake.total;
 		}
-		text('Highscore: ' + this.highscore, 14, 20)
+		rect(-1,-1,width + 1,21);
+		fill(0);
+		text('Highscore: ' + this.highscore, 14, 16)
 		textAlign(RIGHT);
-		text('Length: ' + snake.total, width -14, 20);
+		text('Length: ' + snake.total, width -14, 16);
 		
 		pop();
 	}

@@ -106,7 +106,8 @@ function Snake() {
 
 		//prevents the head from going off screen
 		this.x = constrain(this.x, 0, (width-1)-scl);
-		this.y = constrain(this.y, 0, (height-1)-scl);
+		this.y = constrain(this.y, 20, (height-1)-scl);
+
 	}
 	/**
 	 * This method colors all of the snake body and the head 

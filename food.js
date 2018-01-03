@@ -8,7 +8,7 @@ function Food() {
 	var cols = floor((width-1)/scl);
 	var rows = floor((height-1)/scl);
 	this.x = floor(random(cols)) * scl;
-	this.y = floor(random(rows)) * scl;
+	this.y = floor(random(1,rows)) * scl;
 	
 	//Check if food is on tail
 	for (var i = 0; i < snake.tail.length; i++) {
